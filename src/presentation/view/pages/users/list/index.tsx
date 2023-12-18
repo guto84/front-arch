@@ -25,8 +25,6 @@ export const ListUsers = ({ findAll, findById }: Props) => {
     setIsOpen(true)
   }
 
-  console.log(details)
-
   return <>
     <Table
       data={list.data}
