@@ -1,4 +1,4 @@
-import { User } from "../../../../../modules/users/domain/entities/user.entity"
+import { User } from "../../../../../../modules/users/domain/entities/user.entity"
 
 type Props = {
   data: User[] | undefined

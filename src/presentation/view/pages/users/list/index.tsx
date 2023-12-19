@@ -1,9 +1,9 @@
-import { useState } from "react"
-import { useMutation, useQuery } from "react-query"
 import { IFindAllUserUseCase } from "../../../../../modules/users/domain/usecases/find-all-users.usecase.interface"
-import { Table } from "./table"
-import { Details } from "./details"
+import { Table } from "./components/table"
+import { Details } from "./components/details"
 import { IFindByIdUserUseCase } from "../../../../../modules/users/domain/usecases/find-by-id-users.usecase.interface"
+import { useFindByIdUsers } from "./hooks/find-by-id-users.hook"
+import { useFindAllUsers } from "./hooks/find-all-users.hook"
 
 type Props = {
   findAll: IFindAllUserUseCase
@@ -11,33 +11,33 @@ type Props = {
 }
 
 export const ListUsers = ({ findAll, findById }: Props) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const {
+    listFindAll,
+    isLoadingFindAll,
+    errorFindAll,
+  } = useFindAllUsers(findAll)
 
-  const list = useQuery('usersData', () => findAll.execute())
-  const details = useMutation((id: number) => findById.execute(id))
-
-  const showDetail = (value: boolean) => {
-    setIsOpen(value)
-  }
-
-  const handleDetails = (id: number) => {
-    details.mutate(id)
-    setIsOpen(true)
-  }
+  const {
+    isOpenDetails,
+    showDetail,
+    handleDetails,
+    details,
+    isLoadingDetails,
+  } = useFindByIdUsers(findById)
 
   return <>
     <Table
-      data={list.data}
-      isLoading={list.isLoading}
-      error={list.error}
+      data={listFindAll}
+      isLoading={isLoadingFindAll}
+      error={errorFindAll}
       handleDetails={handleDetails}
     />
 
     <Details
-      isOpen={isOpen}
+      isOpen={isOpenDetails}
       showDetail={showDetail}
-      isLoading={details.isLoading}
-      details={details.data}
+      isLoading={isLoadingDetails}
+      details={details}
     />
   </>
 }

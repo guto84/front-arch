@@ -1,5 +1,5 @@
 import React from 'react';
-import { User } from '../../../../../modules/users/domain/entities/user.entity';
+import { User } from '../../../../../../modules/users/domain/entities/user.entity';
 
 type ModalProps = {
   isOpen: boolean
