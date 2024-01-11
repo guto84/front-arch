@@ -1,6 +1,7 @@
-import { useMutation } from "react-query"
-import { CreateUserInput, ICreateUsersUseCase } from "../../../../../modules/users/domain/usecases/create-users.usecase.interface"
-import { Form } from "./form"
+import { ICreateUsersUseCase } from "../../../../../modules/users/domain/usecases/create-users.usecase.interface"
+import { Form } from "./components/form"
+import { Success } from "./components/success"
+import { useCreateUsers } from "./hooks/create-users.hook"
 
 type Props = {
   create: ICreateUsersUseCase
@@ -8,19 +9,19 @@ type Props = {
 
 export const CreateUsers = ({ create }: Props) => {
 
-  const handleSubmit = useMutation((input: CreateUserInput) => create.execute(input))
+  const {
+    createUsers,
+    isLoading,
+    data,
+    error,
+  } = useCreateUsers(create)
 
-  if (handleSubmit.isLoading) return 'Loading...'
+  if (isLoading) return <div>Loading...</div>
+
+  if (error) return `An error has occurred: ${error}`
 
   return <>
-    <Form submit={handleSubmit.mutate} />
-    {handleSubmit.data && 
-      <div>
-        <h4>Cadastrado com sucesso!</h4>
-        <p>id: {handleSubmit.data.id}</p>
-        <p>name: {handleSubmit.data.name}</p>
-        <p>Email: {handleSubmit.data.email}</p>
-      </div>
-    }
+    <Form submit={createUsers} />
+    <Success data={data} />
   </>
 }

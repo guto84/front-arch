@@ -23,7 +23,6 @@ export const Form = ({ submit }: Props) => {
   }
 
   return (
-    <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register('name')} />
         <input {...register('email', { required: true })} />
@@ -31,6 +30,5 @@ export const Form = ({ submit }: Props) => {
 
         <input type='submit' />
       </form>
-    </>
   )
 }

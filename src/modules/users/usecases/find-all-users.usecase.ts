@@ -3,7 +3,7 @@ import { User } from "../domain/entities/user.entity";
 import { IFindAllUserUseCase } from "../domain/usecases/find-all-users.usecase.interface"
 
 export class FindAllUsersUseCase implements IFindAllUserUseCase {
-    constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) {}
 
   async execute(): Promise<User[]> {
     const users = await this.httpClient.request({

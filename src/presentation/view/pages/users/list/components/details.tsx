@@ -1,14 +1,14 @@
 import React from 'react';
 import { User } from '../../../../../../modules/users/domain/entities/user.entity';
 
-type ModalProps = {
+type DetailsProps = {
   isOpen: boolean
   showDetail: (value: boolean) => void
   details: User | undefined
   isLoading: boolean
 }
 
-export const Details: React.FC<ModalProps> = ({ isOpen, showDetail, details, isLoading }) => {
+export const DetailsComponent: React.FC<DetailsProps> = ({ isOpen, showDetail, details, isLoading }) => {
   if (isLoading) return 'Loading...'
   
   if (!isOpen) return null

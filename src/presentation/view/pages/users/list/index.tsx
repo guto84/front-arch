@@ -1,9 +1,9 @@
-import { IFindAllUserUseCase } from "../../../../../modules/users/domain/usecases/find-all-users.usecase.interface"
-import { Table } from "./components/table"
-import { Details } from "./components/details"
-import { IFindByIdUserUseCase } from "../../../../../modules/users/domain/usecases/find-by-id-users.usecase.interface"
-import { useFindByIdUsers } from "./hooks/find-by-id-users.hook"
+import { TableComponent } from "./components/table"
+import { DetailsComponent } from "./components/details"
 import { useFindAllUsers } from "./hooks/find-all-users.hook"
+import { useFindByIdUsers } from "./hooks/find-by-id-users.hook"
+import { IFindAllUserUseCase } from "../../../../../modules/users/domain/usecases/find-all-users.usecase.interface"
+import { IFindByIdUserUseCase } from "../../../../../modules/users/domain/usecases/find-by-id-users.usecase.interface"
 
 type Props = {
   findAll: IFindAllUserUseCase
@@ -20,20 +20,19 @@ export const ListUsers = ({ findAll, findById }: Props) => {
   const {
     isOpenDetails,
     showDetail,
-    handleDetails,
     details,
+    handleDetails,
     isLoadingDetails,
   } = useFindByIdUsers(findById)
 
   return <>
-    <Table
+    <TableComponent
       data={listFindAll}
       isLoading={isLoadingFindAll}
       error={errorFindAll}
       handleDetails={handleDetails}
     />
-
-    <Details
+    <DetailsComponent
       isOpen={isOpenDetails}
       showDetail={showDetail}
       isLoading={isLoadingDetails}

@@ -7,8 +7,8 @@ type Props = {
   handleDetails: (id: number) => void
 }
 
-export const Table = ({ data, isLoading, error, handleDetails }: Props) => {
-  if (isLoading) return 'Loading...'
+export const TableComponent = ({ data, isLoading, error, handleDetails }: Props) => {
+  if (isLoading) return <div>Loading...</div>
 
   if (error) return `An error has occurred: ${error}`
 

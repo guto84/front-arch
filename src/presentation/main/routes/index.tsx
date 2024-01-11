@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { MakeListUsers } from '../factories/users/list-users';
 import { MakeCreateUsers } from "../factories/users/create-users";
+import { MakeListUsers } from "../factories/users/list-users";
 
 const queryClient = new QueryClient()
 

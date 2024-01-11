@@ -1,6 +1,6 @@
+import { useState } from "react"
 import { useMutation } from "react-query"
 import { IFindByIdUserUseCase } from "../../../../../../modules/users/domain/usecases/find-by-id-users.usecase.interface"
-import { useState } from "react"
 
 export const useFindByIdUsers = (findById: IFindByIdUserUseCase) => {
   const [isOpen, setIsOpen] = useState(false)
