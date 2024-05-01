@@ -10,6 +10,7 @@ export class FindAllUsersUseCase implements IFindAllUserUseCase {
       url: 'https://jsonplaceholder.typicode.com/users',
       method: 'get',
     });
+
     return users.data.map((user: User) => ({
       id: user.id,
       name: user.name,

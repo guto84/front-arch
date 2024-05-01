@@ -17,18 +17,25 @@ export const Form = ({ submit }: Props) => {
     reset
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    submit(data)
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await submit(data)
     reset()
   }
 
   return (
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('name')} />
-        <input {...register('email', { required: true })} />
-        {errors.email && <span>This field is required</span>}
-
-        <input type='submit' />
+        <div>
+          <label htmlFor="">Nome</label>
+          <input {...register('name')} />
+        </div>
+        <div>
+          <label>Email</label>
+          <input {...register('email', { required: true })} />
+          {errors.email && <span>This field is required</span>}
+        </div>
+        <div>
+          <input type='submit' />
+        </div>
       </form>
   )
 }

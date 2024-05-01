@@ -15,6 +15,7 @@ export const DetailsComponent: React.FC<DetailsProps> = ({ isOpen, showDetail, d
 
   return (
     <div>
+      <h1>Details</h1>
       <ul>
         <li>{details?.name}</li>
         <li>{details?.email}</li>
