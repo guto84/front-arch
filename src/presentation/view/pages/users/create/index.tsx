@@ -1,7 +1,7 @@
 import { ICreateUsersUseCase } from "../../../../../modules/users/domain/usecases/create-users.usecase.interface"
 import { Form } from "./components/form"
 import { Success } from "./components/success"
-import { useCreateUsers } from "./hooks/create-users.hook"
+import { useCreateUsers } from "./store/create-users.hook"
 
 type Props = {
   create: ICreateUsersUseCase

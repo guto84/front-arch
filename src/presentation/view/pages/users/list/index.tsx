@@ -1,7 +1,7 @@
 import { TableComponent } from "./components/table"
 import { DetailsComponent } from "./components/details"
-import { useFindAllUsers } from "./hooks/find-all-users.hook"
-import { useFindByIdUsers } from "./hooks/find-by-id-users.hook"
+import { useFindAllUsers } from "./store/find-all-users.hook"
+import { useFindByIdUsers } from "./store/find-by-id-users.hook"
 import { IFindAllUserUseCase } from "../../../../../modules/users/domain/usecases/find-all-users.usecase.interface"
 import { IFindByIdUserUseCase } from "../../../../../modules/users/domain/usecases/find-by-id-users.usecase.interface"
 

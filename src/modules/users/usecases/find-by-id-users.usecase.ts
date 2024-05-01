@@ -5,7 +5,7 @@ import { IFindByIdUserUseCase } from "../domain/usecases/find-by-id-users.usecas
 export class FindByIdUsersUseCase implements IFindByIdUserUseCase {
   constructor(private readonly httpClient: HttpClient) {}
 
-  async execute(id: number): Promise<User> {
+  async execute(id: number | null): Promise<User> {
     const user = await this.httpClient.request({
       url: `https://jsonplaceholder.typicode.com/users/${id}`,
       method: 'get',
