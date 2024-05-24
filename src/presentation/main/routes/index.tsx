@@ -1,39 +1,24 @@
 import { createBrowserRouter } from "react-router-dom"
-import { QueryClient, QueryClientProvider } from 'react-query'
 import { MakeCreateUsers } from "../factories/users/create-users";
 import { MakeListUsers } from "../factories/users/list-users";
 import { ListUsers2 } from "../../view/pages/users/list-2";
 import { ListUsers3 } from "../../view/pages/users/list-3";
 
-const queryClient = new QueryClient()
-
 export const router = createBrowserRouter([
   {
     path: "/users",
-    element: 
-    <QueryClientProvider client={queryClient}>
-      <MakeListUsers />
-    </QueryClientProvider>
+    element: <MakeListUsers />
   },
   {
     path: "/users2",
-    element: 
-    <QueryClientProvider client={queryClient}>
-      <ListUsers2 />
-    </QueryClientProvider>
+    element: <ListUsers2 />
   },
   {
     path: "/users3",
-    element: 
-    <QueryClientProvider client={queryClient}>
-      <ListUsers3 />
-    </QueryClientProvider>
+    element: <ListUsers3 />
   },
   {
     path: "/users/create",
-    element: 
-    <QueryClientProvider client={queryClient}>
-      <MakeCreateUsers />
-    </QueryClientProvider>
+    element: <MakeCreateUsers />
   },
 ]);

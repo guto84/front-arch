@@ -1,13 +1,15 @@
-import { useMutation } from "react-query"
+import { useMutation } from "@tanstack/react-query"
 import { CreateUserInput, ICreateUsersUseCase } from "../../../../../../modules/users/domain/usecases/create-users.usecase.interface"
 
 export const useCreateUsers = (create: ICreateUsersUseCase) => {
   
-  const mutation = useMutation((input: CreateUserInput) => create.execute(input))
+  const mutation = useMutation({
+    mutationFn: (input: CreateUserInput) => create.execute(input)
+  })
   
   return {
     createUsers: mutation.mutate,
-    isLoading: mutation.isLoading,
+    isLoading: mutation.isPending,
     data: mutation.data,
     error: mutation.error,
   }

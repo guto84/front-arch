@@ -1,8 +1,11 @@
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { IFindAllUserUseCase } from "../../../../../../modules/users/domain/usecases/find-all-users.usecase.interface"
 
 export const useFindAllUsers = (findAll: IFindAllUserUseCase) => {
-  const list = useQuery('usersData', () => findAll.execute())
+  const list = useQuery({
+    queryKey: ['findAllUsers'],
+    queryFn: () => findAll.execute()
+  })
   
   return {
     listFindAll: list.data,
