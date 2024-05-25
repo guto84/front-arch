@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
+import type {Config} from 'jest'
 
 const config: Config = {
   testEnvironment: 'jest-environment-jsdom',
@@ -12,6 +12,6 @@ const config: Config = {
   collectCoverageFrom: ['src/**/*.ts(x)?', '!src/**/stories.tsx'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup-test.js'],
   modulePaths: ['<rootDir>/src/']
-};
+}
 
-export default config;
+export default config
